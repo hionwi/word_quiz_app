@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>词汇测试应用</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- 选择等级的界面 -->
+      <div id="select-level">
+        <h1>词汇测试</h1>
+        <form id="level-form">
+          <label for="level">请选择一个等级:</label>
+          <select id="level" name="level" required>
+            <option value="" disabled selected>-- 选择等级 --</option>
+            <!-- 等级选项将通过 JavaScript 动态生成 -->
+          </select>
+          <button type="submit">开始测试</button>
+        </form>
+        <p id="error-message" class="error"></p>
+      </div>
+
+      <!-- 测试界面 -->
+      <div id="quiz-section" class="hidden">
+        <h2>词汇测试</h2>
+        <div class="question">
+          <p><strong>单词:</strong> <span id="word"></span></p>
+          <p><strong>词义:</strong> <span id="meaning"></span></p>
+        </div>
+        <form id="quiz-form">
+          <div id="options">
+            <!-- 选项将通过 JavaScript 动态生成 -->
+          </div>
+          <button id="submit-button" type="submit">提交答案</button>
+        </form>
+        <p id="feedback" class="feedback"></p>
+        <!-- 将“下一题”按钮移出表单 -->
+        <button id="next-button" class="hidden">下一题</button>
+      </div>
+
+      <!-- 测试完成界面 -->
+      <div id="result-section" class="hidden">
+        <h2>恭喜你，所有单词都已正确回答！</h2>
+        <button id="restart-button">重新开始</button>
+      </div>
+    </div>
+
+    <!-- 引入词汇数据和脚本 -->
+    <script src="words.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
