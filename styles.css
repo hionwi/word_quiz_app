@@ -91,16 +91,27 @@ button:hover {
   color: red;
 }
 
+#options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .option {
   margin: 10px 0;
-  text-align: left;
+  height: 40px;
   display: flex;
-  align-items: center; /* 垂直居中复选框和标签 */
+  align-items: center; /* 垂直居中 */
 }
 
 .option input[type="checkbox"] {
-  margin-right: 10px;
-  transform: scale(1.2);
+  margin: 0 10px; /* 移除复选框的默认外边距 */
+  vertical-align: middle; /* 确保复选框与文字对齐 */
+}
+
+.option label {
+  margin: 0;
+  line-height: 1; /* 设置文字的行高，避免偏移 */
 }
 
 .correct-option {
