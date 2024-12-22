@@ -94,6 +94,13 @@ button:hover {
 .option {
   margin: 10px 0;
   text-align: left;
+  display: flex;
+  align-items: center; /* 垂直居中复选框和标签 */
+}
+
+.option input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.2);
 }
 
 .correct-option {
@@ -104,23 +111,13 @@ button:hover {
 /* 下一题按钮样式 */
 #next-button {
   /* 与其他按钮保持一致的样式 */
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #28a745;
 }
 
-/* 进度条容器 */
-#progress-bar-container {
-  width: 100%;
-  background-color: #e0e0e0;
-  border-radius: 5px;
-  overflow: hidden;
-  margin: 20px 0;
-}
-
-/* 进度条 */
-#progress-bar {
-  height: 20px;
-  width: 0%;
-  background-color: #76c7c0;
-  transition: width 0.3s;
+#next-button:hover {
+  background-color: #1e7e34;
 }
 
 /* 响应式设计 */

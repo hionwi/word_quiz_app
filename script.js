@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultSection = document.getElementById("result-section");
   const restartButton = document.getElementById("restart-button");
   const nextButton = document.getElementById("next-button");
-  const progressBar = document.getElementById("progress-bar");
+  const submitButton = document.getElementById("submit-button"); // 新增
 
   let testQueue = [];
   let wrongList = [];
@@ -79,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     currentWord = testQueue.shift();
     displayWord(currentWord);
-    updateProgress();
   }
 
   // 显示当前单词及选项
@@ -118,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 清除之前的反馈
     feedback.textContent = "";
-    feedback.classList.remove("correct", "incorrect");
+    feedback.classList.remove("correct", "incorrect", "show");
 
     // 隐藏“下一题”按钮
     nextButton.classList.add("hidden");
@@ -128,14 +127,9 @@ document.addEventListener("DOMContentLoaded", () => {
     labels.forEach((label) => {
       label.classList.remove("correct-option");
     });
-  }
 
-  // 更新进度条
-  function updateProgress() {
-    const total = testQueue.length + wrongList.length + 1; // +1 当前题
-    const completed = testQueue.length + wrongList.length;
-    const percentage = total === 0 ? 100 : (completed / total) * 100;
-    progressBar.style.width = `${percentage}%`;
+    // 显示“提交答案”按钮
+    submitButton.classList.remove("hidden");
   }
 
   // 处理测试表单提交
@@ -149,8 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (selectedOptions.length === 0) {
       feedback.textContent = "请至少选择一个选项。";
-      feedback.classList.add("incorrect");
-      feedback.classList.add("show");
+      feedback.classList.add("incorrect", "show");
       return;
     }
 
@@ -159,8 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!currentWordObj) {
       feedback.textContent = "发生错误，请重新开始测试。";
-      feedback.classList.add("incorrect");
-      feedback.classList.add("show");
+      feedback.classList.add("incorrect", "show");
       return;
     }
 
@@ -176,8 +168,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (isCorrect) {
       feedback.textContent = "正确！";
-      feedback.classList.add("correct");
-      feedback.classList.add("show");
+      feedback.classList.add("correct", "show");
+
+      // 隐藏“提交答案”按钮
+      submitButton.classList.add("hidden");
 
       // 直接跳转到下一题
       setTimeout(() => {
@@ -189,12 +183,14 @@ document.addEventListener("DOMContentLoaded", () => {
       feedback.textContent = `错误！正确的同义词是：${correctSynonyms.join(
         ", "
       )}`;
-      feedback.classList.add("incorrect");
-      feedback.classList.add("show");
+      feedback.classList.add("incorrect", "show");
       wrongList.push(currentWordObj);
 
       // 高亮显示正确选项
       highlightCorrectOptions(correctSynonyms);
+
+      // 隐藏“提交答案”按钮
+      submitButton.classList.add("hidden");
 
       // 显示“下一题”按钮
       nextButton.classList.remove("hidden");
@@ -220,9 +216,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // 隐藏结果界面，显示选择等级界面
     resultSection.classList.add("hidden");
     selectLevelSection.classList.remove("hidden");
-
-    // 恢复进度条
-    progressBar.style.width = "0%";
   });
 
   // 工具函数：打乱数组顺序（Fisher-Yates Shuffle）
