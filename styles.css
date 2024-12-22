@@ -1,5 +1,6 @@
 /* styles.css */
 
+/* 全局样式 */
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
@@ -10,7 +11,7 @@ body {
 .container {
   width: 90%;
   max-width: 600px;
-  margin: 50px auto;
+  margin: 20px auto;
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
@@ -18,31 +19,44 @@ body {
   text-align: center;
 }
 
+/* 标题样式 */
 h1,
 h2 {
   color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
 }
 
+/* 表单样式 */
 form {
   margin-top: 20px;
 }
 
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
 select {
   padding: 10px;
-  width: 80%;
-  font-size: 16px;
+  width: 100%;
+  font-size: 1rem;
   margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 button {
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 1rem;
   background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin: 10px 5px;
 }
 
 button:hover {
@@ -60,7 +74,13 @@ button:hover {
 
 .feedback {
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.feedback.show {
+  opacity: 1;
 }
 
 .feedback.correct {
@@ -79,4 +99,112 @@ button:hover {
 .correct-option {
   color: green;
   font-weight: bold;
+}
+
+/* 下一题按钮样式 */
+#next-button {
+  /* 与其他按钮保持一致的样式 */
+}
+
+/* 进度条容器 */
+#progress-bar-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+/* 进度条 */
+#progress-bar {
+  height: 20px;
+  width: 0%;
+  background-color: #76c7c0;
+  transition: width 0.3s;
+}
+
+/* 响应式设计 */
+
+/* 平板设备（宽度 600px 到 900px） */
+@media (min-width: 600px) and (max-width: 900px) {
+  .container {
+    width: 80%;
+    max-width: 700px;
+    margin: 30px auto;
+  }
+
+  h1,
+  h2 {
+    font-size: 2rem;
+  }
+
+  label {
+    font-size: 1.1rem;
+  }
+
+  select,
+  button {
+    font-size: 1.1rem;
+  }
+
+  .feedback {
+    font-size: 1.3rem;
+  }
+
+  /* 调整选项的布局 */
+  .option {
+    margin: 15px 0;
+  }
+}
+
+/* 桌面设备（宽度大于 900px） */
+@media (min-width: 900px) {
+  .container {
+    width: 60%;
+    max-width: 800px;
+    margin: 50px auto;
+  }
+
+  h1,
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  label {
+    font-size: 1.2rem;
+  }
+
+  select,
+  button {
+    font-size: 1.2rem;
+  }
+
+  .feedback {
+    font-size: 1.5rem;
+  }
+
+  /* 选项布局 */
+  .option {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+  }
+
+  .option input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+  }
+
+  /* 按钮间距调整 */
+  button {
+    padding: 12px 25px;
+  }
+}
+
+/* 触摸友好性 */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  .option label {
+    touch-action: manipulation;
+  }
 }

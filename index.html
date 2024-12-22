@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <title>词汇测试应用</title>
     <link rel="stylesheet" href="styles.css" />
+    <!-- 视口设置，确保在移动设备上正确缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
     <div class="container">
@@ -32,11 +34,15 @@
           <div id="options">
             <!-- 选项将通过 JavaScript 动态生成 -->
           </div>
-          <button id="submit-button" type="submit">提交答案</button>
+          <button type="submit">提交答案</button>
         </form>
         <p id="feedback" class="feedback"></p>
         <!-- 将“下一题”按钮移出表单 -->
         <button id="next-button" class="hidden">下一题</button>
+        <!-- 进度条 -->
+        <div id="progress-bar-container">
+          <div id="progress-bar"></div>
+        </div>
       </div>
 
       <!-- 测试完成界面 -->
