@@ -433,7 +433,7 @@ const words = [
   },
   {
     id: 55,
-    word: "imperactive",
+    word: "imperative",
     meaning: "adj.必要的；紧急的",
     synonym: ["compelling", "necessary", "urgent"],
     level: "2",
