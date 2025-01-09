@@ -84,7 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // 显示当前单词及选项
   function displayWord(wordObj) {
     wordElement.textContent = wordObj.word;
-    meaningElement.textContent = wordObj.meaning;
+    // meaningElement.textContent = wordObj.meaning;
+    meaningElement.textContent = 's ';
 
     // 生成选项：正确同义词 + 3 个干扰选项
     const correctSynonyms = wordObj.synonym;
