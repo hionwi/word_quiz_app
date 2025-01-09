@@ -22,6 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let wrongList = [];
   let currentWord = null;
 
+  meaningElement.classList.add("hidden");
+  
+
   // 初始化等级选项
   function initializeLevels() {
     const levels = Array.from(new Set(words.map((word) => word.level))).sort();
@@ -85,7 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function displayWord(wordObj) {
     wordElement.textContent = wordObj.word;
     // meaningElement.textContent = wordObj.meaning;
-    meaningElement.textContent = 's ';
 
     // 生成选项：正确同义词 + 3 个干扰选项
     const correctSynonyms = wordObj.synonym;
